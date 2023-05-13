@@ -57,23 +57,23 @@ end_date_str = end_date.strftime('%Y-%m-%d')  # convert back to string
 
 
 
-def get_files_in_month(directory, year, month):
+
+def get_files_in_month(directory, year, month, extension=None):
     files_in_month = []
     for file in os.listdir(directory):
         file_path = os.path.join(directory, file)
         if os.path.isfile(file_path):
             creation_time = datetime.fromtimestamp(os.path.getctime(file_path))
             if creation_time.year == year and creation_time.month == month:
-                files_in_month.append(file_path)
+                if extension is None or file.endswith(extension):
+                    files_in_month.append(file_path)
     return files_in_month
-
 
 year = start_date.year
 month = start_date.month
-files = get_files_in_month('path\\path\\', year, month)
-first_file = files[0]
-file_name = first_file.rsplit('\\',1)[-1]
-file_name = file_name.rsplit('.',1)[0]
+files = get_files_in_month('C:\\test\\', year, month, extension='.txt')
+print(files)
+
 
 print(f'{files}')
 
