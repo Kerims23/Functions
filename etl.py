@@ -77,3 +77,22 @@ print(files)
 
 print(f'{files}')
 
+
+
+
+import pandas as pd
+import os
+def merge_xlsx_files(paths):
+    merged_data = pd.DataFrame()
+    for path in paths:
+        if os.path.isfile(path):
+            # Currently Excel but can use csv, parquet, etc. 
+            data = pd.read_excel(path, dtype = str)
+            #concats all df together
+            merged_data = pd.concat([merged_data, data], ignore_index=True)
+    return merged_data
+#make files the path of where excel files exist
+df = merge_xlsx_files(files)
+
+
+
