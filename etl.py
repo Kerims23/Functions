@@ -4,6 +4,9 @@ Created on Thu Jul  7 16:15:37 2022
 
 @author: KSever
 """
+
+
+#this is a test for github contributions 
 ###basic load
 #sourcing
 from datetime import datetime
